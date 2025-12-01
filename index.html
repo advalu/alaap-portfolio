@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alaap Thomas - Collateral Management & Operations Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a5f7f;
+            --secondary-color: #00bcd4;
+            --accent-color: #ff6b6b;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --text-dark: #ffffff;
+            --text-light: #b0b0b0;
+            --bg-light: #1e1e1e;
+            --primary-color: #0a9fb5;
+            --secondary-color: #00d9f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Alaap Thomas</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Collateral Management & Operations Expert</h1>
+        <p class="hero-subtitle">Transforming financial operations through strategic optimization and AI-driven automation</p>
+        <div>
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+            <a href="https://www.linkedin.com/in/alaap-thomas" target="_blank" class="btn btn-primary">LinkedIn</a>
+            <a href="https://www.xing.com/profile/Alaap_Thomas" target="_blank" class="btn btn-primary">Xing</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Specialized Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Collateral Management</h3>
+                <p>Optimize collateral allocation, streamline margin calculations, and implement robust ISDA CSA frameworks to enhance capital efficiency and reduce operational risk.</p>
+            </div>
+            <div class="service-card">
+                <h3>Operations Optimization</h3>
+                <p>Redesign operational workflows, eliminate bottlenecks, and implement best practices that enhance efficiency, reduce errors, and improve overall performance.</p>
+            </div>
+            <div class="service-card">
+                <h3>AI & Automation</h3>
+                <p>Leverage cutting-edge AI technologies to transform manual processes, enhance decision-making capabilities, and create scalable solutions for complex operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div>
+                <p>With extensive experience in collateral management and financial operations, I specialize in helping European investment firms navigate complex regulatory environments while optimizing their operational frameworks.</p>
+                <p style="margin-top: 1rem;">My approach combines deep domain expertise with innovative technology solutions, ensuring that theoretical benefits translate into measurable business outcomes.</p>
+            </div>
+            <div>
+                <h3>Core Competencies</h3>
+                <div class="skills">
+                    <span class="skill-tag">Collateral Management</span>
+                    <span class="skill-tag">ISDA CSA</span>
+                    <span class="skill-tag">Operations</span>
+                    <span class="skill-tag">Process Improvement</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">AI/ML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2020 - Present</div>
+                <h3>Senior Operations Consultant</h3>
+                <p>Led collateral optimization projects for European investment banks, achieving 25% reduction in margin requirements and enhanced regulatory compliance.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2018 - 2020</div>
+                <h3>Collateral Management Specialist</h3>
+                <p>Designed and implemented automated margin call systems, reducing processing time by 40% and operational errors by 60%.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2016 - 2018</div>
+                <h3>Operations Analyst</h3>
+                <p>Developed sophisticated data-driven dashboards for monitoring operational risk, enabling proactive identification and resolution of potential issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Let's Connect</h2>
+        <p>I'm currently available for consulting opportunities with European investment and financial firms.</p>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <p>alaapthomasalex@gmail.com</p>
+                <a href="mailto:alaapthomasalex@gmail.com">Send Email</a>
+            </div>
+            <div class="contact-card">
+                <h3>💼 LinkedIn</h3>
+                <p>Professional Network</p>
+                <a href="https://www.linkedin.com/in/alaap-thomas" target="_blank">Connect on LinkedIn</a>
+            </div>
+            <div class="contact-card">
+                <h3>🌐 Xing</h3>
+                <p>German & European Network</p>
+                <a href="https://www.xing.com/profile/Alaap_Thomas" target="_blank">Connect on Xing</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alaap Thomas. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            updateThemeButton();
+        }
+
+        function updateThemeButton() {
+            const button = document.querySelector('.theme-toggle');
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            button.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeButton();
+    </script>
+</body>
+</html>
